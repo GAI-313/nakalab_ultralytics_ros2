@@ -192,7 +192,6 @@ class PersonDetectorState(smach.State, PersonDetector):
             サービス呼び出し、購読、変換処理のいずれかで例外が発生した場合。
 
         """
-
         smach.State.__init__(self, outcomes=['success', 'timeout', 'failure'],
                              output_keys=['person_poses'])
         PersonDetector.__init__(self, node=node)
@@ -720,16 +719,16 @@ class PersonDetectorState(smach.State, PersonDetector):
                 callback=self.__cb
             ):
                 self.__node.get_logger().info('''
-	================================================
-	PERSON DETECTOR START!
-	------------------------------------------------
-	condition: %s
-	conference: %f
-	scan_time_sec: %f
-	timeout_sec: %f
-	cluster_radius_m: %f
-	min_matched_samples: %d
-	================================================
+    ================================================
+    PERSON DETECTOR START!
+    ------------------------------------------------
+    condition: %s
+    conference: %f
+    scan_time_sec: %f
+    timeout_sec: %f
+    cluster_radius_m: %f
+    min_matched_samples: %d
+    ================================================
                 ''' % (
                     self.___condition,
                     self.__confedence,
@@ -780,7 +779,7 @@ PERSON DETECTOR STOP...
 PERSON DETECTION SUCCESSFLLY !
 SERCH CONDITION: %s
 ================================================
-            '''%self.___condition)
+            ''' % self.___condition)
             return 'success'
 
         except Exception:

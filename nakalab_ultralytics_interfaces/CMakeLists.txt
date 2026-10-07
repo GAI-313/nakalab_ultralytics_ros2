@@ -9,6 +9,7 @@ find_package(ament_cmake REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -20,7 +21,11 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PersonPose3DArray.msg"
   "msg/PointPose3DArray.msg"
   "srv/Detect.srv"
-  DEPENDENCIES geometry_msgs std_msgs std_srvs
+  "msg/ObjectSeg2D.msg"
+  "msg/ObjectSeg2DArray.msg"
+  "msg/ObjectSeg3D.msg"
+  "msg/ObjectSeg3DArray.msg"
+  DEPENDENCIES geometry_msgs std_msgs std_srvs sensor_msgs
 )
 
 if(BUILD_TESTING)

@@ -1,5 +1,4 @@
 import os
-from glob import glob
 from setuptools import find_packages, setup
 
 package_name = 'nakalab_ultralytics_ros2'
@@ -12,13 +11,11 @@ data_files.append(("share/" + package_name, ["package.xml"]))
 
 def package_files(directory, data_files):
     for path, directories, filenames in os.walk(directory):
-        for filename in filenames:
-            data_files.append(
-                (
-                    "share/" + package_name + "/" + path,
-                    glob(path + "/**/*.*", recursive=True),
-                )
-            )
+        directories[:] = sorted(d for d in directories if not d.startswith(('.', '__pycache__')))
+        files = [os.path.join(path, name) for name in sorted(filenames)
+                 if not name.startswith('.') and not name.endswith('.pyc')]
+        if files:
+            data_files.append(("share/" + package_name + "/" + path, files))
     return data_files
 
 
@@ -44,7 +41,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'person_pose = nakalab_ultralytics_ros2.person_pose:main'
+            'person_pose = nakalab_ultralytics_ros2.person_pose:main',
+            'object_seg_pose = nakalab_ultralytics_ros2.object_seg_pose:main',
         ],
     },
 )

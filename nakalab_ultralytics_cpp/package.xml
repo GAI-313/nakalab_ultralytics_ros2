@@ -10,6 +10,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>geometry_msgs</depend>
+  <depend>libopencv-dev</depend>
   <depend>message_filters</depend>
   <depend>nakalab_ultralytics_interfaces</depend>
   <depend>rclcpp</depend>

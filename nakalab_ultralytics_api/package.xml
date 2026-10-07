@@ -10,6 +10,7 @@
   <depend>nakalab_ultralytics_interfaces</depend>
   <depend>smach_ros</depend>
   <depend>rclpy_util</depend>
+  <exec_depend>rclpy</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
